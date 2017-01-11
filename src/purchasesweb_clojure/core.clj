@@ -34,12 +34,26 @@
                    (get purchase "customer_id") " " 
                    ( get purchase "date") " " 
                    ( get purchase "category") " ")])
-       purchases)])) 
+       purchases)]))
 
 (webcode/defroutes routes
   (webcode/GET "/:category{.*}" [category]
     (htmlout/html [:html
                    [:body
+                    [:div#header-links
+                     "[ "
+                     [:a {:href "/"} "All Categories"]
+                     " | "
+                     [:a {:href "/Alcohol"} "Alcohol"]
+                     " | "
+                     [:a {:href "/Furniture"} "Furniture"]
+                     " | "
+                     [:a {:href "/Toiletries"} "Toiletries"]
+                     " | "
+                     [:a {:href "/Jewelry"} "Jewelry"]
+                     " | "
+                     [:a {:href "/Shoes"} "Shoes"]
+                     " ]"]
                     (purchases-html category)]])))
                     
     
